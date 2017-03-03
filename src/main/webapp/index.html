@@ -1,0 +1,25 @@
+<html>
+<body>
+  <h1>Welcome</h1>
+  <input type="button" onclick="test()" value="test"/>
+</body>
+<script>
+  function test() {
+    const access_token =window.localStorage.getItem('access_token');
+    fetch('http://localhost:8082/products', {
+      method: 'GET',
+      credentials: 'include',
+      headers: {
+        'Authorization': 'Bearer ' + access_token,
+      }
+    })
+      .then(blob => blob.json())
+      .then(json => {
+        console.log(json)
+      })
+      .catch(function (error) {
+        console.log('Request failed', error);
+      });
+  }
+</script>
+</html>
