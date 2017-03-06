@@ -4,7 +4,7 @@
   <input type="text" id="user" />
   <label for="password">password</label>
   <input type="password" id="password" />
-  <button onClick="login()">login</button>
+  <button onClick="loginTemp()">login</button>
 </body>
 <script>
   function login() {
@@ -34,7 +34,7 @@
       .then(blob => blob.json())
       .then(json => {
         window.localStorage.setItem('access_token', json.access_token)
-        window.location.href='index.html'
+        window.location.href='indexTemp.html'
       })
       .catch(function (error) {
         console.log('Request failed', error);

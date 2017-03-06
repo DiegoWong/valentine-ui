@@ -1,13 +1,47 @@
-server:
-    port: 8080
+facebook:
+  client:
+    clientId: 233668646673605
+    clientSecret: 33b17e044ee6a4fa383f46ec6e28ea1d
+    accessTokenUri: https://graph.facebook.com/oauth/access_token
+    userAuthorizationUri: https://www.facebook.com/dialog/oauth
+    tokenName: oauth_token
+    authenticationScheme: query
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://graph.facebook.com/me
+
+github:
+  client:
+    clientId: bd1c0a783ccdd1c9b9e4
+    clientSecret: 1a9030fbca47a5b2c28e92f19050bb77824b5ad1
+    accessTokenUri: https://github.com/login/oauth/access_token
+    userAuthorizationUri: https://github.com/login/oauth/authorize
+    clientAuthenticationScheme: form
+  resource:
+    userInfoUri: https://api.github.com/user
+
+valentine:
+  client:
+    clientId: acme
+    clientSecret: acmesecret
+    accessTokenUri: http://localhost:8081/uaa/oauth/token
+    userAuthorizationUri: http://localhost:8081/uaa/oauth/authorize
+    authenticationScheme: form
+    clientAuthenticationScheme: header
+    isAuthenticationRequired: true
+  resource:
+    userInfoUri: http://localhost:8081/uaa/user
+    jwt:
+      key-uri: http://localhost:8081/uaa/oauth/token_key
+
 security:
   oauth2:
-    client:
-      access-token-uri: http://localhost:8081/uaa/oauth/token
-      user-authorization-uri: http://localhost:8081/uaa/oauth/authorize
-      client-id: acme
-      client-secret: acmesecret
-      scope: write
     resource:
-      token-info-uri: http://localhost:8081/uaa/oauth/check_token
-      user-info-uri: http://localhost:8081/uaa/oauth/user
+      jwt:
+        key-uri: http://localhost:8081/uaa/oauth/token_key
+    client:
+      client-secret: acmesecret
+      client-id: acme
+      accessTokenUri: http://localhost:8081/uaa/oauth/token
+      userAuthorizationUri: http://localhost:8081/uaa/oauth/authorize
+      client-authentication-scheme: form
