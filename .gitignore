@@ -2,3 +2,7 @@
 /.gradle/
 /.idea/
 /build/
+/src/main/js/node_modules/
+/src/main/js/dist/
+/src/main/resources/static/js/
+/src/main/js/index.html
