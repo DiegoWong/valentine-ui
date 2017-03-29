@@ -44,7 +44,7 @@ const environmentConfigs = {
 
         {
           test: /\.jsx?$/,  // Notice the regex here. We're matching on js and jsx files.
-          use: ['babel-loader?presets[]=es2015&presets[]=react'],
+          use: ['babel-loader'],
           include: SRC
         },
 
@@ -72,7 +72,7 @@ const environmentConfigs = {
 
         {
           test: /\.jsx?$/,  // Notice the regex here. We're matching on js and jsx files.
-          use: ['babel-loader?presets[]=es2015&presets[]=react'],
+          use: ['babel-loader'],
           include: SRC
         },
 

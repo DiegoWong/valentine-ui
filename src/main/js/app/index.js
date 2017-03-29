@@ -1,18 +1,21 @@
-import {render} from 'react-dom';
 import React from 'react';
-import Login from './login/login';
-import Product from './containers/product/product';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+
+import combinedReducers from './redux/reducers/CombinedReducers'
+import App from './containers/app/app';
+
 import './assets/fonts/roboto/Roboto-Light.ttf';
 
-import {  BrowserRouter as Router, Route } from 'react-router-dom';
 
+let store = createStore(combinedReducers, /* preloadedState, */
+    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 
 render(
-  <Router>
-    <div>
-      <Route path="/" component={Login}/>
-      <Route path="/product" component={Product} />
-    </div>
-  </Router>,
-  document.getElementById('content'));
+  <Provider store={ store }>
+    <App />
+  </Provider>,
+  document.getElementById('content')
+);
