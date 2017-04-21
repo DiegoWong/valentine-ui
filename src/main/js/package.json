@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server"
+    "build:dev": "webpack --env=dev --progress --profile --colors",
+    "build:prod": "webpack --env=prod --progress --profile --colors",
+    "start": "webpack-dev-server --env=dev"
   },
   "author": "Diego Wong",
   "license": "Unlicense",
@@ -22,11 +23,14 @@
   },
   "dependencies": {
     "babel-preset-stage-2": "^6.22.0",
+    "material-ui": "^0.17.1",
     "react": "^15.0.1",
     "react-dom": "^15.4.2",
     "react-redux": "^5.0.3",
     "react-router": "^4.0.0",
-    "redux": "^3.6.0"
+    "react-tap-event-plugin": "^2.0.1",
+    "redux": "^3.6.0",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

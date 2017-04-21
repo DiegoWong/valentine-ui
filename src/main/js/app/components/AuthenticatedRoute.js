@@ -1,10 +1,11 @@
 import React from 'react'
 import { Route, Redirect } from 'react-router-dom'
 
-const AuthenticatedRoute = ({ component, ...rest }) => (
-  <Route {...rest} render={props => {
+const AuthenticatedRoute = ({ component, ...rest }) => {
+  return (
+    <Route {...rest} render={props => {
       return (
-        props.authenticated ? (
+        rest.authenticated ? (
             React.createElement(component, props)
           ) : (
             <Redirect to={{
@@ -14,7 +15,8 @@ const AuthenticatedRoute = ({ component, ...rest }) => (
           )
       )
     }
-  }/>
-);
+    }/>
+  )
+} ;
 
 export default AuthenticatedRoute

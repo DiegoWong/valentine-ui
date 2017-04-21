@@ -1,21 +1,28 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
+import  thunk from 'redux-thunk'
+import { createStore, compose, applyMiddleware } from 'redux'
+import injectTapEventPlugin from 'react-tap-event-plugin';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 import combinedReducers from './redux/reducers/CombinedReducers'
-import App from './containers/app/app';
+import Root from './containers/root/Root';
+import './styles.scss'
 
-import './assets/fonts/roboto/Roboto-Light.ttf';
 
+injectTapEventPlugin();
 
-let store = createStore(combinedReducers, /* preloadedState, */
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
-
+let store = createStore(combinedReducers, compose(
+  applyMiddleware(thunk),
+  typeof window === 'object' && typeof window.devToolsExtension !== 'undefined' ? window.devToolsExtension() : (f) => f
+));
 
 render(
   <Provider store={ store }>
-    <App />
+    <MuiThemeProvider>
+      <Root />
+    </MuiThemeProvider>
   </Provider>,
   document.getElementById('content')
 );

@@ -1,6 +1,6 @@
 import {
-  GET_ACCESS_TOKEN
-} from './../actions/Authentication'
+  SET_ACCESS_TOKEN
+} from '../actions'
 
 
 const defaultState = {
@@ -11,11 +11,11 @@ const defaultState = {
 const authentication = (state = defaultState, action) => {
 
   switch (action.type){
-    case GET_ACCESS_TOKEN:
+    case SET_ACCESS_TOKEN:
       return {
         ...state,
         authenticated: true,
-        access_token: action.access_token
+        accessToken: action.accessToken
       }
     default: return state
   }

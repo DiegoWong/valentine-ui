@@ -47,8 +47,13 @@ dependencies {
 }
 
 task buildJS(type: Exec) {
+    if ( !project.hasProperty("env") ) {
+        env = "dev"
+    } else {
+        env = project.getProperty("env")
+    }
     workingDir 'src/main/js'
-    commandLine 'npm', 'run', 'build'
+    commandLine 'npm', 'run', 'build:' + env
     standardOutput = new ByteArrayOutputStream()
     ext.output = {
         return standardOutput.toString()
